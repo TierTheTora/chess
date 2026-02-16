@@ -5,13 +5,6 @@
 #include <math.h>
 
 /**
- *
- * @note always check if `__chess_error` is true after every function
- *       call.
- *
- * */
-
-/**
  * TODO: add castling and en passent
  * */
 
