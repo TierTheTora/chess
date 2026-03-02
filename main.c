@@ -10,6 +10,7 @@ main ()
 {
 	struct Board board = init_board();
 	enum Team player = WHITE;
+	uchar_t move[6] = { 0 };
 start:
 	puts(player == WHITE ? "White turn" : "Black Turn");
 	puts(" +a--b--c--d--e--f--g--h+");
@@ -33,7 +34,7 @@ start:
 	puts(" +----------------------+");
 err_start:
 
-	uchar_t move[7] = { 0 };
+	memset(move, 0, sizeof(move));
 	int r = read (STDIN, move, 5);
 
 	if (r != 5)
@@ -61,6 +62,10 @@ err_start:
 	
 	if (is_checkmate(enemy, board)) {
 		puts("Checkmate!");
+		return EXIT_SUCCESS;
+	}
+	if (is_draw(board)) {
+		puts("Draw!");
 		return EXIT_SUCCESS;
 	}
 	if (is_check(enemy, board))
