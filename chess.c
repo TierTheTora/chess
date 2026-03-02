@@ -1,8 +1,6 @@
 #include "chess.h"
 #include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
 /**
  * TODO: add castling and en passent
@@ -13,6 +11,7 @@ const uchar_t __pieces[] = {
 	'p', 'r', 'k', 'b', 'K', 'q', ' '
 };
 
+/* get piece movement direction */
 inline int
 get_dir (enum Team team)
 {
@@ -250,6 +249,21 @@ is_checkmate (enum Team team, struct Board board)
 		}
 	}
 	return true; /* in check */
+}
+
+bool
+is_draw (struct Board board)
+{
+	for (int i = 0; i < BOARD_H; i++) {
+		for (int j = 0; j < BOARD_W; j++) {
+			/* check if other pieces than kings exist */
+			if (board.piece[i][j] != KING
+			 && board.piece[i][j] != NONE)
+				return false;
+		}
+	}
+	/* only kings, it a draw! */
+	return false;
 }
 
 bool

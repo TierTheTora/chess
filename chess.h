@@ -64,6 +64,7 @@ bool find_king (enum Team team, struct Board board,
                 struct Space *space);
 bool is_check (enum Team team, struct Board board);
 bool is_checkmate (enum Team team, struct Board board);
+bool is_draw (struct Board board);
 bool move_pawn (struct Move move, struct Board board);
 bool is_move_valid (struct Move move, struct Board board);
 bool is_move_legal (enum Team team, struct Move move,
