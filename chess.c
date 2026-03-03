@@ -263,7 +263,7 @@ is_draw (struct Board board)
 		}
 	}
 	/* only kings, it a draw! */
-	return false;
+	return true;
 }
 
 bool
